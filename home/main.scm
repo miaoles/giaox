@@ -10,7 +10,7 @@
 (home-environment
   (packages (specifications->packages (list
     "chatterino2")))
-  (services (lisd
+  (services (list
     (service home-bash-service-type
       (home-bash-configuration
         (aliases '(
