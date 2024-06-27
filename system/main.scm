@@ -68,9 +68,6 @@
 
   (services
     (cons*
-;;    (simple-service 'custom-etc-files etc-service-type `(
-;;        ("bspwm/bspwmrc" ,(local-file "../configurations/bspwm/bspwmrc"))
-;;        ("sxhkd/sxhkdrc" ,(local-file "../configurations/sxhkd/sxhkdrc"))))
 ;;    (service network-manager-service-type)
       (service lxqt-desktop-service-type)
       (service cups-service-type)
