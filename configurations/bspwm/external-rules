@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $2 = steam_app_* ]]; then
+	echo "desktop=^5 state=floating border=off"
+elif [[ $3 = steam_app_* ]]; then
+	echo "desktop=^5 state=floating border=off"
+fi

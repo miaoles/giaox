@@ -1,0 +1,97 @@
+### General ###
+
+# Close or Kill
+super + {_,shift + }Delete
+	bspc node -{c,k}
+
+# Alternate between Tiled and Monocle Layout
+super + m
+	bspc desktop -l next
+
+### State & Flags ###
+
+# Set the Window State
+super + {t,shift + t,f,shift + f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Hide Node
+super + h
+	bspc node -g hidden
+
+# Unhide Node
+super + shift + h
+	bspc node {,$(bspc query -N -n .hidden | tail -n1)} -g hidden=off
+
+# Set the Node Flags
+super + {l,s,p}
+	bspc node -g {locked,sticky,private}
+
+### Focus & Swap ###
+
+# Focus Node or Send to a Desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+super + {_,shift + }{F1,F2,F3,F4,F5,F6,F7,F8,F9,F10}
+	bspc {desktop -f,node -d} '^{11,12,13,14,15,16,17,18,19,20}'
+
+# Focus Node by Direction among Visible Nodes
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+# Focus Node/Desktop by Path
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# Focus Node by Next/Previous (through Tree)
+super + {_,shift + }c
+	bspc node -f {next,prev}
+
+# Focus Desktop
+super + bracket{left,right}
+	bspc desktop -f {prev,next}
+
+# Focus Last Node/Desktop
+#super + Tab
+#  bspc node -f last
+
+# Focus Older/Newer Node
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+### Preselection ###
+
+# Preselect Direction
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# Preselect Ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# Cancel Preselection of Focused Node
+super + ctrl + space
+	bspc node -p cancel
+
+# Cancel Preselection of Focused Desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+### Rearrangement ###
+
+# Flip Desktop (Horizonally/Vertically)
+super + {_,shift + }f
+	bspc node @/ -F {horizontal,vertical}
+
+# Rotate Parent/Desktop
+super + {_,shift + }r
+	bspc node {'@parent',@/} -R 90
+
+# Swap Current Node and Biggest Node
+#super + g
+#	bspc node -s biggest
+
+### Mouse ###
+# mouse5 takes role of super
