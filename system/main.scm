@@ -41,12 +41,13 @@
   (file-systems hardware-file-systems)
 
   (users
-    (cons* (user-account
-      (name main-user-name)
-      (comment main-user-name)
-      (group "users")
-      (home-directory (string-append "/home/" main-user-name))
-      (supplementary-groups '("wheel" "netdev" "audio" "video")))
+    (cons*
+      (user-account
+        (name main-user-name)
+        (comment main-user-name)
+        (group "users")
+        (home-directory (string-append "/home/" main-user-name))
+        (supplementary-groups '("wheel" "netdev" "audio" "video")))
     %base-user-accounts))
 
   (packages
@@ -72,6 +73,5 @@
       (service lxqt-desktop-service-type)
       (service cups-service-type)
       (service spice-vdagent-service-type)
-      (set-xorg-configuration
-        (xorg-configuration (keyboard-layout keyboard-layout)))
+      (set-xorg-configuration (xorg-configuration (keyboard-layout keyboard-layout)))
     desktop-services-revised)))

@@ -23,9 +23,4 @@ source /etc/bashrc
 if [ -n "$GUIX_ENVIRONMENT" ]
 then
     PS1='\u@\h \w [env]\$ '
-else
-    PS1='\u@\h \w\$ '
 fi
-alias ls='ls -p --color=auto'
-alias ll='ls -l'
-alias grep='grep --color=auto'
