@@ -10,7 +10,7 @@
 
 (use-service-modules cups desktop networking ssh xorg spice)
 
-(load "../hosts/virtual-machine/hardware.scm")
+(load "../hosts/desktop/hardware.scm")
 
 (define main-user-name "miles")
 (define main-host-name "iao")
@@ -52,17 +52,45 @@
 
   (packages
     (append (map specification->package '(
+      "ncurses" ;; tput
       "xrandr"
       "bspwm"
       "sxhkd"
+      "xdg-desktop-portal"
+      "lximage-qt"
+      "bluez"
+      "bluez-alsa"
+      "blueman"
+      "font-google-roboto"
+      "font-google-roboto-mono"
+      "font-google-noto"
+      "font-google-noto-emoji"
+      "font-google-noto-sans-cjk"
+      "breeze-icons"
+      "bibata-cursor-theme"
+      "xscreensaver"
       "tint2"
       "xtitle"
       "kvantum"
       "nm-tray"
+      "copyq"
+      "ntfs-3g"
+      "lxqt-archiver"
+      "unrar"
+      "unzip"
+      "p7zip"
+      "libexif"
+      "v4l-utils"
+      "xdotool"
+      "patchutils"
+      "i2c-tools"
+      "ffmpeg"
+      "yt-dlp"
       "emacs"
       "kate"
       "git"
       "firefox"
+      "ungoogled-chromium"
       "steam"
       "protonup-ng"))
     %base-packages))
@@ -70,8 +98,9 @@
   (services
     (cons*
 ;;    (service network-manager-service-type)
-      (service lxqt-desktop-service-type)
+      (service bluetooth-service-type)
       (service cups-service-type)
-      (service spice-vdagent-service-type)
+;;    (service spice-vdagent-service-type)
       (set-xorg-configuration (xorg-configuration (keyboard-layout keyboard-layout)))
+      (service lxqt-desktop-service-type)
     desktop-services-revised)))
